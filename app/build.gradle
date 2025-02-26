@@ -34,7 +34,7 @@ android {
     }
 
     defaultConfig {
-        applicationId 'tv.org.eu.bunnyabc'
+        applicationId 'live.org.eu.bunnyabc.box'
         minSdkVersion 16
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 26
