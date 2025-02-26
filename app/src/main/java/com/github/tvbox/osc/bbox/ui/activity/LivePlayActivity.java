@@ -613,8 +613,9 @@ public class LivePlayActivity extends BaseActivity {
             mHandler.removeCallbacks(mUpdateNetSpeedRun);
             super.onBackPressed();
             // 返回主页
-            Intent intent = new Intent(mContext, HomeActivity.class);
-            LivePlayActivity.this.startActivity(intent);
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(0);
         }
     }
 
@@ -1847,7 +1848,7 @@ public class LivePlayActivity extends BaseActivity {
     @Override
     public void finish() {
         super.finish();
-        jumpActivity(HomeActivity.class);
+        //jumpActivity(HomeActivity.class);
     }
 
     public void loadProxyLives(String url) {
