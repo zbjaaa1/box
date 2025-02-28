@@ -710,6 +710,7 @@ public class HomeActivity extends BaseActivity {
                     Bundle bundle = new Bundle();
                     bundle.putBoolean("useCache", true);
                     intent.putExtras(bundle);
+                    finish();
                     HomeActivity.this.startActivity(intent);
                 }
 
