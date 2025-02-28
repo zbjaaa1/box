@@ -463,10 +463,16 @@ public class PlayActivity extends BaseActivity {
     }
 
     void playUrl(String url, HashMap<String, String> headers) {
+        //playUrl:https:\/\/vv.jisuzyv.com\/play\/BeXN85gb\/index.m3u8  视频播放出错
+        //playUrl:https://svip.high21-playback.com/20250227/41759_2e1d6e6d/index.m3u8
+        url=url.trim().replace("\\","");
         LOG.i("playUrl:" + url);
-        if(autoRetryCount>1 && url.contains(".m3u8")){
+        /*
+        //404 Not Found
+        if(autoRetryCount>0 && url.contains(".m3u8")){
             url="http://home.jundie.top:666/unBom.php?m3u8="+url;//尝试去bom头再次播放
         }
+        */
         final String finalUrl = url;
         runOnUiThread(new Runnable() {
             @Override
