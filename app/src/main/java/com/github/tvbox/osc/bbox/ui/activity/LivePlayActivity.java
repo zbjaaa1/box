@@ -48,6 +48,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import xyz.doikki.videoplayer.player.VideoView;
 
+
+import android.content.IntentFilter;
+import android.content.BroadcastReceiver;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -337,7 +340,25 @@ public class LivePlayActivity extends BaseActivity {
         initLiveChannelList();
         // initChannelEpgInfoList();
         initLiveSettingGroupList();
+        //亮屏事件
+        IntentFilter mScreenOnFilter = new IntentFilter("android.intent.action.SCREEN_ON");
+        this.registerReceiver(mScreenOReceiver, mScreenOnFilter);
     }
+    
+    //监听亮屏事件
+    private BroadcastReceiver mScreenOReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+
+            if (action.equals("android.intent.action.SCREEN_ON")) {
+                //亮屏后重新加载
+                reload();
+            }
+        }
+
+    };
+    
     //获取EPG并存储 // 百川epg  DIYP epg   51zmt epg ------- 自建EPG格式输出格式请参考 51zmt
     private List<Epginfo> epgdata = new ArrayList<>();
 
